@@ -1,5 +1,5 @@
 ---
-name: ls-files
+name: files-ls
 description: lists files in directory
 branding:
   icon: package
