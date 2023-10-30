@@ -1,0 +1,17 @@
+---
+name: ls-files
+description: lists files in directory
+branding:
+  icon: package
+  color: green
+inputs:
+  folder:
+    description: folder to list
+  regex:
+    description: regex to match eg "^.+\.(([jJ][sS][oO][nN])|(js))$"
+outputs:
+  files:
+    description: list of files
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

@@ -1,0 +1,23 @@
+---
+name: Test
+on: [push]
+
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: RouxAntoine/checkout@v3.5.4
+      - uses: ./
+        id: test
+        with:
+          folder: '.'
+          regex: ^.+\.(([jJ][sS][oO][nN])|(js))$
+      - name: results
+        run: |
+          echo ${{ steps.test.outputs.files }}
+          if test ${{ steps.test.outputs.files }} != "[main.js,package-lock.json,package.json]"; then
+            echo ::error:: ${{ steps.test.outputs.files }}
+            exit 1
+          fi
